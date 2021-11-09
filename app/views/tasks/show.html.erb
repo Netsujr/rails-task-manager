@@ -1,0 +1,16 @@
+
+
+<div class="container">
+<h1>Your Task</h1>
+
+<h2><%= @task.title %></h2>
+<h3><%= @task.details %></h3>
+<p> <% if @task.completed %>
+<p><i class="fas fa-check-square"></i>Finished!</p>
+<% else %>
+<p><i class="fas fa-square"></i>Not done yet!</p>
+<% end %> </p>
+
+<%= link_to "Edit Task", edit_tasks_path(@task), class: "btn btn-success"%>
+<%= link_to "Return Home", tasks_path, class: "btn btn-default btn-secondary" %>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>My tasks</h1>
+  <% @tasks.each do |task| %>
+  <div class="cards d-flex">
+      <div class="card" style="width: 50vh; margin-bottom: 1rem;">
+        <ul class="list-group">
+          <li class="list-group-item"><%= link_to "#{task.title}", "/tasks/#{task.id}" %>
+            <span><%= link_to edit_tasks_path(task) do %>
+              <i class="fas fa-edit" style="margin-left: 1rem;"></i>
+              <% end %></span>
+              <span><%= link_to delete_tasks_path(task), method: :delete, data: { confirm: "Do you want to delete #{task.title}?" } do %>
+              <i class="fas fa-cross" style="margin-left: 1rem;"></i>
+              <% end %></span>
+              <span><% if task.completed? %>
+              <i class="fas fa-check" style="margin-left: 1rem;"></i>
+              <% else %>
+              <i class="fas fa-times" style="margin-left: 1rem;"></i>
+              <% end %></span>
+          </li>
+          </ul>
+
+      </div>
+    </div>
+    <% end %>
+  <%= link_to "Add New Task", new_tasks_path, class: "btn btn-info", id: "add-button" %>
+</div>
